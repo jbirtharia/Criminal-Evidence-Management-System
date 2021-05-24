@@ -12,7 +12,7 @@ public class SimpleAbstractService <T extends AbstractEntity>  implements Abstra
 
     @Override
     public void save(T entity) {
-
+        // No body needed now
     }
 
     @Override
@@ -22,7 +22,7 @@ public class SimpleAbstractService <T extends AbstractEntity>  implements Abstra
 
     @Override
     public void delete(T entity) {
-
+        // No body needed now
     }
 
     @Override

@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * @author JayendraB
  * @createdOn 5 /16/2021
  */
-public class SimpleOperationsServiceTest extends SimpleServiceTestBase {
+class SimpleOperationsServiceTest extends SimpleServiceTestBase {
 
     static final Long DETECTIVE_ID = 1L;
     static final String BADGE_NO = "NY112233";
@@ -60,7 +60,7 @@ public class SimpleOperationsServiceTest extends SimpleServiceTestBase {
      */
     @DisplayName("Create Investigation Test")
     @Test
-    public void testCreateCriminalCase(){
+     void testCreateCriminalCase(){
         // TODO : Create evidence map
         Map<Evidence, String> evidenceLocationMap = new HashMap<>();
         Evidence ev = new Evidence();

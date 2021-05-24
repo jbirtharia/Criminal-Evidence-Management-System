@@ -1,7 +1,5 @@
 package com.evidence.app.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
 /**
  * @author JayendraB

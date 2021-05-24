@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.stream.Collectors;
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * The type Request interceptor.
@@ -23,17 +22,16 @@ public class RequestInterceptor implements Filter{
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
             throws IOException, ServletException {
         log.info("++++++++++++++++++++++++++++++++++ REQUEST INITIALIZED +++++++++++++++++++++++++++++++++++++++++++");
-        final HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
-        final HttpServletResponse httpServletResponse = (HttpServletResponse) servletResponse;
+        final var httpServletRequest = (HttpServletRequest) servletRequest;
         log.info("Input Request : {}",getDataFromStream(httpServletRequest.getReader()));
         try {
             filterChain.doFilter(httpServletRequest, servletResponse);
         } finally {
-                afterRequest(httpServletRequest, httpServletResponse);
+                afterRequest();
         }
     }
 
-    private void afterRequest(final HttpServletRequest request, final HttpServletResponse response) throws IOException {
+private void afterRequest() {
         log.info("++++++++++++++++++++++++++++++++++ REQUEST COMPLETED +++++++++++++++++++++++++++++++++++++++++++");
     }
 

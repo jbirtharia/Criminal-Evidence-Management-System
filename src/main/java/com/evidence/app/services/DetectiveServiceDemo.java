@@ -27,7 +27,6 @@ public class DetectiveServiceDemo {
                 "jaybir@1994", DateProcessor.toDate(DateProcessor.getCurrentDateAndTime()),"");
         Detective detective = new Detective(person,"1012", Rank.CHIEF_INSPECTOR,Boolean.FALSE);
         log.info("Detective data : {}",detective);
-        int i = 1/0;
         return detective;
     }
 }

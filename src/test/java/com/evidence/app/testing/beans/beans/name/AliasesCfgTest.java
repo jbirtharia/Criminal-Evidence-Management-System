@@ -14,7 +14,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * Created on 23/05/21
  */
 @Slf4j
-public class AliasesCfgTest {
+ class AliasesCfgTest {
 
     @Test
     void testSimpleBeans(){

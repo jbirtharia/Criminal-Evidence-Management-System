@@ -14,6 +14,10 @@ import java.time.format.DateTimeFormatter;
 @Slf4j
 public class DateProcessor {
 
+    private DateProcessor(){
+
+    }
+
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Constants.DATA_TIME_FORMAT);
 
     /**

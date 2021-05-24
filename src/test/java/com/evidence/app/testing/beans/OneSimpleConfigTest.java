@@ -13,7 +13,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
  * @createdOn 5/16/2021
  */
 @Slf4j
-public class OneSimpleConfigTest {
+class OneSimpleConfigTest {
 
     @Test
     void testOneSimpleConfig(){
