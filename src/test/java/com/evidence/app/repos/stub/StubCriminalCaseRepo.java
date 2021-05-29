@@ -31,7 +31,12 @@ import com.evidence.app.entities.CriminalCase;
 import com.evidence.app.entities.Detective;
 import com.evidence.app.repos.CriminalCaseRepo;
 import org.apache.commons.lang3.NotImplementedException;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -42,6 +47,16 @@ import java.util.Set;
 public class StubCriminalCaseRepo extends StubAbstractRepo<CriminalCase> implements CriminalCaseRepo {
 
     @Override
+    public <S extends CriminalCase> S save(S s) {
+        if (s.getId() == null) {
+            long id = (long) records.size() + 1;
+            s.setId(id);
+        }
+        records.put(s.getId(), s);
+        return s;
+    }
+
+    @Override
     public Set<CriminalCase> findByLeadInvestigator(Detective detective) {
         throw new NotImplementedException("Not needed for this stub.");
     }
@@ -49,5 +64,121 @@ public class StubCriminalCaseRepo extends StubAbstractRepo<CriminalCase> impleme
     @Override
     public Optional<CriminalCase> findByNumber(String caseNumber) {
         throw new NotImplementedException("Not needed for this stub.");
+    }
+
+    @Override
+    public List<CriminalCase> findAll() {
+        return null;
+    }
+
+    @Override
+    public List<CriminalCase> findAll(Sort sort) {
+        return null;
+    }
+
+    @Override
+    public Page<CriminalCase> findAll(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public List<CriminalCase> findAllById(Iterable<Long> iterable) {
+        return null;
+    }
+
+    @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
+    public void deleteById(Long aLong) {
+
+    }
+
+    @Override
+    public void delete(CriminalCase criminalCase) {
+
+    }
+
+    @Override
+    public void deleteAll(Iterable<? extends CriminalCase> iterable) {
+
+    }
+
+    @Override
+    public void deleteAll() {
+
+    }
+
+
+    @Override
+    public <S extends CriminalCase> List<S> saveAll(Iterable<S> iterable) {
+        return null;
+    }
+
+    @Override
+    public Optional<CriminalCase> findById(Long aLong) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsById(Long aLong) {
+        return false;
+    }
+
+    @Override
+    public void flush() {
+
+    }
+
+    @Override
+    public <S extends CriminalCase> S saveAndFlush(S s) {
+        return null;
+    }
+
+    @Override
+    public void deleteInBatch(Iterable<CriminalCase> iterable) {
+
+    }
+
+    @Override
+    public void deleteAllInBatch() {
+
+    }
+
+    @Override
+    public CriminalCase getOne(Long aLong) {
+        return null;
+    }
+
+    @Override
+    public <S extends CriminalCase> Optional<S> findOne(Example<S> example) {
+        return Optional.empty();
+    }
+
+    @Override
+    public <S extends CriminalCase> List<S> findAll(Example<S> example) {
+        return null;
+    }
+
+    @Override
+    public <S extends CriminalCase> List<S> findAll(Example<S> example, Sort sort) {
+        return null;
+    }
+
+    @Override
+    public <S extends CriminalCase> Page<S> findAll(Example<S> example, Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public <S extends CriminalCase> long count(Example<S> example) {
+        return 0;
+    }
+
+    @Override
+    public <S extends CriminalCase> boolean exists(Example<S> example) {
+        return false;
     }
 }

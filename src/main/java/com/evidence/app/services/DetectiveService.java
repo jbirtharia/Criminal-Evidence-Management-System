@@ -10,4 +10,6 @@ import com.evidence.app.entities.Rank;
  */
 public interface DetectiveService extends  AbstractService<Detective> {
     Detective createDetective(Person person, Rank rank);
+
+    Detective getDetectiveForCase(String badgeNumber);
 }

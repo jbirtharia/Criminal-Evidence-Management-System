@@ -60,7 +60,7 @@ class SimpleOperationsServiceTest extends SimpleServiceTestBase {
      */
     @DisplayName("Create Investigation Test")
     @Test
-     void testCreateCriminalCase(){
+    void testCreateCriminalCase(){
         // TODO : Create evidence map
         Map<Evidence, String> evidenceLocationMap = new HashMap<>();
         Evidence ev = new Evidence();

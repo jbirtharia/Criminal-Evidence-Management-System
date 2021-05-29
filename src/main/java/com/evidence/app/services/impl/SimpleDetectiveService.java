@@ -28,6 +28,12 @@ public class SimpleDetectiveService extends SimpleAbstractService<Detective> imp
         repo.save(detective);
         return detective;
     }
+
+    @Override
+    public Detective getDetectiveForCase(String badgeNumber) {
+        return repo.findByBadgeNumber(badgeNumber).orElse(null);
+    }
+
     public void setRepo(DetectiveRepo repo) {
         this.repo = repo;
     }

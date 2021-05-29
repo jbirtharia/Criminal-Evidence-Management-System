@@ -3,8 +3,10 @@ package com.evidence.app.repos;
 import com.evidence.app.entities.CriminalCase;
 import com.evidence.app.entities.Evidence;
 import com.evidence.app.entities.Storage;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -12,11 +14,11 @@ import java.util.Set;
  * @createdOn 5/16/2021
  */
 @Repository
-public interface EvidenceRepo extends AbstractRepo<Evidence> {
+public interface EvidenceRepo extends JpaRepository<Evidence,Long> {
 
     Set<Evidence> findByCriminalCase(CriminalCase criminalCase);
 
     Evidence findByNumber(String evidenceNumber);
 
-    boolean isInStorage(Storage storage);
+    List<Evidence> findAllByStorage(Storage storage);
 }

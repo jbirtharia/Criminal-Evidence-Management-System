@@ -29,7 +29,12 @@ package com.evidence.app.repos.stub;
 
 import com.evidence.app.entities.Detective;
 import com.evidence.app.repos.DetectiveRepo;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -41,5 +46,135 @@ public class StubDetectiveRepo extends StubAbstractRepo<Detective> implements De
     @Override
     public Optional<Detective> findByBadgeNumber(String badgeNumber) {
         return Optional.of(records.get(1L));
+    }
+
+    @Override
+    public Optional<Detective> findByIdWithCriminalCases(Long id) {
+        return Optional.empty();
+    }
+
+    @Override
+    public List<Detective> findAll() {
+        return null;
+    }
+
+    @Override
+    public List<Detective> findAll(Sort sort) {
+        return null;
+    }
+
+    @Override
+    public Page<Detective> findAll(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public List<Detective> findAllById(Iterable<Long> iterable) {
+        return null;
+    }
+
+    @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
+    public void deleteById(Long aLong) {
+
+    }
+
+    @Override
+    public void delete(Detective detective) {
+
+    }
+
+    @Override
+    public void deleteAll(Iterable<? extends Detective> iterable) {
+
+    }
+
+    @Override
+    public void deleteAll() {
+
+    }
+
+    @Override
+    public <S extends Detective> S save(S s) {
+        if (s.getId() == null) {
+           long id = (long) records.size() + 1;
+            s.setId(id);
+        }
+        records.put(s.getId(), s);
+        return s;
+    }
+
+    @Override
+    public <S extends Detective> List<S> saveAll(Iterable<S> iterable) {
+        return null;
+    }
+
+    @Override
+    public Optional<Detective> findById(Long aLong) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsById(Long aLong) {
+        return false;
+    }
+
+    @Override
+    public void flush() {
+
+    }
+
+    @Override
+    public <S extends Detective> S saveAndFlush(S s) {
+        return null;
+    }
+
+    @Override
+    public void deleteInBatch(Iterable<Detective> iterable) {
+
+    }
+
+    @Override
+    public void deleteAllInBatch() {
+
+    }
+
+    @Override
+    public Detective getOne(Long aLong) {
+        return null;
+    }
+
+    @Override
+    public <S extends Detective> Optional<S> findOne(Example<S> example) {
+        return Optional.empty();
+    }
+
+    @Override
+    public <S extends Detective> List<S> findAll(Example<S> example) {
+        return null;
+    }
+
+    @Override
+    public <S extends Detective> List<S> findAll(Example<S> example, Sort sort) {
+        return null;
+    }
+
+    @Override
+    public <S extends Detective> Page<S> findAll(Example<S> example, Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public <S extends Detective> long count(Example<S> example) {
+        return 0;
+    }
+
+    @Override
+    public <S extends Detective> boolean exists(Example<S> example) {
+        return false;
     }
 }

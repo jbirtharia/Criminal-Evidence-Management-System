@@ -9,4 +9,5 @@ import com.evidence.app.entities.Storage;
 public interface StorageService extends AbstractService<Storage>{
     Storage createStorage(String name, String location);
 
+    Storage getEvidenceStorage(String name);
 }

@@ -1,13 +1,15 @@
 package com.evidence.app.services.impl;
 
 import com.evidence.app.contants.Constants;
-import com.evidence.app.custom.exception.ServiceException;
 import com.evidence.app.entities.*;
 import com.evidence.app.repos.CriminalCaseRepo;
 import com.evidence.app.repos.DetectiveRepo;
 import com.evidence.app.repos.EvidenceRepo;
 import com.evidence.app.repos.StorageRepo;
+import com.evidence.app.services.DetectiveService;
 import com.evidence.app.services.OperationsService;
+import com.evidence.app.services.StorageService;
+import com.evidence.app.util.NumberGenerator;
 import lombok.Data;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.NotImplementedException;
@@ -31,13 +33,10 @@ public class SimpleOperationsService implements OperationsService {
     private CriminalCaseRepo criminalCaseRepo;
 
     @Autowired
-    private EvidenceRepo evidenceRepo;
+    private DetectiveService detectiveService;
 
     @Autowired
-    private DetectiveRepo detectiveRepo;
-
-    @Autowired
-    private StorageRepo storageRepo;
+    private StorageService storageService;
 
     @Override
     public Detective createDetective(String firstName, String lastName, LocalDateTime hiringDate, Rank rank) {
@@ -49,27 +48,23 @@ public class SimpleOperationsService implements OperationsService {
         Set<Evidence> evidences = new LinkedHashSet<>();
 
         // Retrieve detective
-        Optional<Detective> isDetective = detectiveRepo.findByBadgeNumber(badgeNo);
+        Detective detective = detectiveService.getDetectiveForCase(badgeNo);
 
         // Create a criminal case instance
         CriminalCase criminalCase = new CriminalCase();
 
         // Set the leadDetective field only when detective is present
-        isDetective.ifPresent(criminalCase::setLeadInvestigator);
+        Optional.ofNullable(detective)
+                .ifPresent(criminalCase::setLeadInvestigator);
 
         evidenceMap.forEach((evidence, storageName) -> {
             // Retrieve storage, throw ServiceException if not found
-            Optional<Storage> isStorage = storageRepo.findByName(storageName);
+            Storage storage = storageService.getEvidenceStorage(storageName);
 
             // If storage is found, link it to the evidence and add evidence to the case
-            isStorage.ifPresentOrElse(
-                    storage -> {
-                        evidence.setStorage(storage);
-                        evidences.add(evidence);
-                    },
-                    () -> {
-                        throw new ServiceException(Constants.STORE_NOT_FOUND);
-                    });
+            evidence.setStorage(storage);
+            evidence.setCriminalCase(criminalCase);
+            evidences.add(evidence);
         });
 
         criminalCase.setShortDescription(shortDescription);
@@ -77,6 +72,7 @@ public class SimpleOperationsService implements OperationsService {
         if (CollectionUtils.isNotEmpty(evidences))
             criminalCase.setEvidenceSet(evidences);
 
+        criminalCase.setNumber(NumberGenerator.getCaseNumber());
         // Save the criminal case instance
         criminalCaseRepo.save(criminalCase);
         return criminalCase;
@@ -100,5 +96,20 @@ public class SimpleOperationsService implements OperationsService {
     @Override
     public Set<Detective> getAssignedTeam(String caseNumber) {
         throw new NotImplementedException(Constants.NOT_NEEDED_EXCEPTION);
+    }
+
+    @Override
+    public void setEvidenceRepo(EvidenceRepo evidenceRepo) {
+        // Not Needed Now.
+    }
+
+    @Override
+    public void setDetectiveRepo(DetectiveRepo detectiveRepo) {
+        // Not Needed Now.
+    }
+
+    @Override
+    public void setStorageRepo(StorageRepo storageRepo) {
+        // Not Needed Now.
     }
 }

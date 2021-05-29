@@ -23,7 +23,7 @@ public class RequestInterceptor implements Filter{
             throws IOException, ServletException {
         log.info("++++++++++++++++++++++++++++++++++ REQUEST INITIALIZED +++++++++++++++++++++++++++++++++++++++++++");
         final var httpServletRequest = (HttpServletRequest) servletRequest;
-        log.info("Input Request : {}",getDataFromStream(httpServletRequest.getReader()));
+        //log.info("Input Request : {}",getDataFromStream(httpServletRequest.getReader()));
         try {
             filterChain.doFilter(httpServletRequest, servletResponse);
         } finally {
@@ -31,7 +31,7 @@ public class RequestInterceptor implements Filter{
         }
     }
 
-private void afterRequest() {
+    private void afterRequest() {
         log.info("++++++++++++++++++++++++++++++++++ REQUEST COMPLETED +++++++++++++++++++++++++++++++++++++++++++");
     }
 

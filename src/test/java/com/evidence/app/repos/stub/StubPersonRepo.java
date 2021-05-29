@@ -27,10 +27,18 @@ SOFTWARE.
 */
 package com.evidence.app.repos.stub;
 
+import com.evidence.app.entities.Detective;
 import com.evidence.app.entities.Person;
 import com.evidence.app.repos.PersonRepo;
 import org.apache.commons.lang3.NotImplementedException;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -38,13 +46,170 @@ import java.util.Set;
  * @createdOn 5/16/2021
  */
 public class StubPersonRepo extends StubAbstractRepo<Person> implements PersonRepo {
+
     @Override
-    public Person findByUsername(String username) {
-        throw new NotImplementedException("Not needed for this stub.");
+    public <S extends Person> S save(S s) {
+        if (s.getId() == null) {
+            long id = (long) records.size() + 1;
+            s.setId(id);
+        }
+        records.put(s.getId(), s);
+        return s;
     }
 
     @Override
-    public Set<Person> findByCompleteName(String firstName, String lastName) {
-        throw new NotImplementedException("Not needed for this stub.");
+    public Optional<Person> findByUsername(String username) {
+        return Optional.empty();
+    }
+
+    @Override
+    public List<Person> findByUsernameLike(String username) {
+        return null;
+    }
+
+    @Override
+    public Optional<Person> findByCompleteName(String fn, String lastName) {
+        return Optional.empty();
+    }
+
+
+    @Override
+    public List<Person> findByFirstName(String firstName) {
+        return null;
+    }
+
+    @Override
+    public List<Person> findByFirstNameLike(String firstName) {
+        return null;
+    }
+
+    @Override
+    public List<Person> findByLastName(String lastName) {
+        return null;
+    }
+
+    @Override
+    public List<Person> findByLastNameLike(String lastName) {
+        return null;
+    }
+
+    @Override
+    public List<Person> findByHiringDate(LocalDateTime date) {
+        return null;
+    }
+
+    @Override
+    public List<Person> findAll() {
+        return null;
+    }
+
+    @Override
+    public List<Person> findAll(Sort sort) {
+        return null;
+    }
+
+    @Override
+    public Page<Person> findAll(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public List<Person> findAllById(Iterable<Long> iterable) {
+        return null;
+    }
+
+    @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
+    public void deleteById(Long aLong) {
+
+    }
+
+    @Override
+    public void delete(Person person) {
+
+    }
+
+    @Override
+    public void deleteAll(Iterable<? extends Person> iterable) {
+
+    }
+
+    @Override
+    public void deleteAll() {
+
+    }
+
+    @Override
+    public <S extends Person> List<S> saveAll(Iterable<S> iterable) {
+        return null;
+    }
+
+    @Override
+    public Optional<Person> findById(Long aLong) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsById(Long aLong) {
+        return false;
+    }
+
+    @Override
+    public void flush() {
+
+    }
+
+    @Override
+    public <S extends Person> S saveAndFlush(S s) {
+        return null;
+    }
+
+    @Override
+    public void deleteInBatch(Iterable<Person> iterable) {
+
+    }
+
+    @Override
+    public void deleteAllInBatch() {
+
+    }
+
+    @Override
+    public Person getOne(Long aLong) {
+        return null;
+    }
+
+    @Override
+    public <S extends Person> Optional<S> findOne(Example<S> example) {
+        return Optional.empty();
+    }
+
+    @Override
+    public <S extends Person> List<S> findAll(Example<S> example) {
+        return null;
+    }
+
+    @Override
+    public <S extends Person> List<S> findAll(Example<S> example, Sort sort) {
+        return null;
+    }
+
+    @Override
+    public <S extends Person> Page<S> findAll(Example<S> example, Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public <S extends Person> long count(Example<S> example) {
+        return 0;
+    }
+
+    @Override
+    public <S extends Person> boolean exists(Example<S> example) {
+        return false;
     }
 }

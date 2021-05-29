@@ -27,10 +27,16 @@ SOFTWARE.
 */
 package com.evidence.app.repos.stub;
 
+import com.evidence.app.entities.Detective;
 import com.evidence.app.entities.Storage;
 import com.evidence.app.repos.StorageRepo;
 import org.apache.commons.lang3.NotImplementedException;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -38,6 +44,17 @@ import java.util.Optional;
  * @createdOn 5/16/2021
  */
 public class StubStorageRepo extends StubAbstractRepo<Storage> implements StorageRepo {
+
+    @Override
+    public <S extends Storage> S save(S s) {
+        if (s.getId() == null) {
+            long id = (long) records.size() + 1;
+            s.setId(id);
+        }
+        records.put(s.getId(), s);
+        return s;
+    }
+
     @Override
     public Optional<Storage> findByName(String name) {
         switch (name) {
@@ -52,5 +69,120 @@ public class StubStorageRepo extends StubAbstractRepo<Storage> implements Storag
     @Override
     public Optional<Storage> findByLocation(String location) {
         throw new NotImplementedException("Not needed for this stub.");
+    }
+
+    @Override
+    public List<Storage> findAll() {
+        return null;
+    }
+
+    @Override
+    public List<Storage> findAll(Sort sort) {
+        return null;
+    }
+
+    @Override
+    public Page<Storage> findAll(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public List<Storage> findAllById(Iterable<Long> iterable) {
+        return null;
+    }
+
+    @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
+    public void deleteById(Long aLong) {
+
+    }
+
+    @Override
+    public void delete(Storage storage) {
+
+    }
+
+    @Override
+    public void deleteAll(Iterable<? extends Storage> iterable) {
+
+    }
+
+    @Override
+    public void deleteAll() {
+
+    }
+
+    @Override
+    public <S extends Storage> List<S> saveAll(Iterable<S> iterable) {
+        return null;
+    }
+
+    @Override
+    public Optional<Storage> findById(Long aLong) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsById(Long aLong) {
+        return false;
+    }
+
+    @Override
+    public void flush() {
+
+    }
+
+    @Override
+    public <S extends Storage> S saveAndFlush(S s) {
+        return null;
+    }
+
+    @Override
+    public void deleteInBatch(Iterable<Storage> iterable) {
+
+    }
+
+    @Override
+    public void deleteAllInBatch() {
+
+    }
+
+    @Override
+    public Storage getOne(Long aLong) {
+        return null;
+    }
+
+    @Override
+    public <S extends Storage> Optional<S> findOne(Example<S> example) {
+        return Optional.empty();
+    }
+
+    @Override
+    public <S extends Storage> List<S> findAll(Example<S> example) {
+        return null;
+    }
+
+    @Override
+    public <S extends Storage> List<S> findAll(Example<S> example, Sort sort) {
+        return null;
+    }
+
+    @Override
+    public <S extends Storage> Page<S> findAll(Example<S> example, Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public <S extends Storage> long count(Example<S> example) {
+        return 0;
+    }
+
+    @Override
+    public <S extends Storage> boolean exists(Example<S> example) {
+        return false;
     }
 }

@@ -18,7 +18,7 @@ public class DateProcessor {
 
     }
 
-    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(Constants.DATA_TIME_FORMAT);
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern(Constants.DATA_TIME_FORMAT);
 
     /**
      * To date local date time.
@@ -27,7 +27,7 @@ public class DateProcessor {
      * @return the local date time
      */
     public static LocalDateTime toDate(String date) {
-        return LocalDateTime.parse(date, formatter);
+        return LocalDateTime.parse(date, FORMATTER);
     }
 
     /**
@@ -37,7 +37,7 @@ public class DateProcessor {
      * @return the string
      */
     public static String toString(final LocalDateTime date){
-        return date.format(formatter);
+        return date.format(FORMATTER);
     }
 
     /**
