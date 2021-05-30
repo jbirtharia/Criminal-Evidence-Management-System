@@ -5,6 +5,7 @@ import com.evidence.app.custom.exception.ServiceException;
 import com.evidence.app.entities.Storage;
 import com.evidence.app.repos.StorageRepo;
 import com.evidence.app.services.StorageService;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
  * @createdOn 5/16/2021
  */
 @Service
+@NoArgsConstructor
 public class SimpleStorageService extends SimpleAbstractService<Storage> implements StorageService {
 
     @Autowired
@@ -32,7 +34,7 @@ public class SimpleStorageService extends SimpleAbstractService<Storage> impleme
         return repo.findByName(name).orElseThrow(() -> new ServiceException(Constants.STORE_NOT_FOUND));
     }
 
-    public void setRepo(StorageRepo repo) {
+    public SimpleStorageService(StorageRepo repo){
         this.repo = repo;
     }
 }

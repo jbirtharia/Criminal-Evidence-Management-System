@@ -24,25 +24,21 @@ public class SimpleServiceTestBase {
     StorageRepo storageRepo;
 
     OperationsService operationsService;
-    SimpleDetectiveService detectiveService;
+    DetectiveService detectiveService;
     SimpleStorageService storageService;
 
+    /**
+     * Init method.
+     * Create all objects for test cases and inject dependencies.
+     */
     void init() {
         this.detectiveRepo = new StubDetectiveRepo();
         this.criminalCaseRepo = new StubCriminalCaseRepo();
         this.evidenceRepo = new StubEvidenceRepo();
         this.storageRepo = new StubStorageRepo();
 
-        this.operationsService = new SimpleOperationsService();
-
-        this.operationsService.setDetectiveRepo(detectiveRepo);
-        this.operationsService.setCriminalCaseRepo(criminalCaseRepo);
-        this.operationsService.setEvidenceRepo(evidenceRepo);
-        this.operationsService.setStorageRepo(storageRepo);
-
-        this.detectiveService = new SimpleDetectiveService();
-        this.detectiveService.setRepo(detectiveRepo);
-        this.storageService = new SimpleStorageService();
-        this.storageService.setRepo(storageRepo);
+        this.detectiveService = new SimpleDetectiveService(detectiveRepo);
+        this.storageService = new SimpleStorageService(storageRepo);
+        this.operationsService = new SimpleOperationsService(detectiveService,storageService,criminalCaseRepo);
     }
 }

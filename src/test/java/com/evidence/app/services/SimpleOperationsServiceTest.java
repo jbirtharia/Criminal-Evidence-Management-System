@@ -1,6 +1,7 @@
 package com.evidence.app.services;
 
 import com.evidence.app.entities.*;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * @author JayendraB
  * @createdOn 5 /16/2021
  */
+@Slf4j
 class SimpleOperationsServiceTest extends SimpleServiceTestBase {
 
     static final Long DETECTIVE_ID = 1L;
@@ -70,6 +72,8 @@ class SimpleOperationsServiceTest extends SimpleServiceTestBase {
 
         evidenceLocationMap.put(ev, "Here");
 
+        log.info("detectiveService : "+detectiveService);
+        log.info("detectiveRepo : "+detectiveRepo);
         // TODO : Create criminal case
         CriminalCase criminalCase = operationsService.createCriminalCase(CaseType.FELONY,
                 "Drugs being sold to minors", BADGE_NO, evidenceLocationMap);

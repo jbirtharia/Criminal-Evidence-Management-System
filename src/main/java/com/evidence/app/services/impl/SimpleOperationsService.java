@@ -3,14 +3,12 @@ package com.evidence.app.services.impl;
 import com.evidence.app.contants.Constants;
 import com.evidence.app.entities.*;
 import com.evidence.app.repos.CriminalCaseRepo;
-import com.evidence.app.repos.DetectiveRepo;
-import com.evidence.app.repos.EvidenceRepo;
-import com.evidence.app.repos.StorageRepo;
 import com.evidence.app.services.DetectiveService;
 import com.evidence.app.services.OperationsService;
 import com.evidence.app.services.StorageService;
 import com.evidence.app.util.NumberGenerator;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +25,7 @@ import java.util.*;
  */
 @Service
 @Data
+@NoArgsConstructor
 public class SimpleOperationsService implements OperationsService {
 
     @Autowired
@@ -98,18 +97,9 @@ public class SimpleOperationsService implements OperationsService {
         throw new NotImplementedException(Constants.NOT_NEEDED_EXCEPTION);
     }
 
-    @Override
-    public void setEvidenceRepo(EvidenceRepo evidenceRepo) {
-        // Not Needed Now.
-    }
-
-    @Override
-    public void setDetectiveRepo(DetectiveRepo detectiveRepo) {
-        // Not Needed Now.
-    }
-
-    @Override
-    public void setStorageRepo(StorageRepo storageRepo) {
-        // Not Needed Now.
+    public SimpleOperationsService(DetectiveService detectiveService, StorageService storageService, CriminalCaseRepo criminalCaseRepo){
+        this.detectiveService = detectiveService;
+        this.storageService = storageService;
+        this.criminalCaseRepo = criminalCaseRepo;
     }
 }

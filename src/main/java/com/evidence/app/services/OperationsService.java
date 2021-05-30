@@ -1,11 +1,6 @@
 package com.evidence.app.services;
 
 import com.evidence.app.entities.*;
-import com.evidence.app.repos.CriminalCaseRepo;
-import com.evidence.app.repos.DetectiveRepo;
-import com.evidence.app.repos.EvidenceRepo;
-import com.evidence.app.repos.StorageRepo;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -29,14 +24,4 @@ public interface OperationsService {
     boolean solveCase(String caseNumber, String reason);
 
     Set<Detective> getAssignedTeam(String caseNumber);
-
-    // setter skeletons for setting repositories
-
-    void setCriminalCaseRepo(CriminalCaseRepo criminalCaseRepo);
-
-    void setEvidenceRepo(EvidenceRepo evidenceRepo);
-
-    void setDetectiveRepo(DetectiveRepo detectiveRepo);
-
-    void setStorageRepo(StorageRepo storageRepo);
 }

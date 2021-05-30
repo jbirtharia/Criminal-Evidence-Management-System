@@ -6,6 +6,7 @@ import com.evidence.app.entities.Rank;
 import com.evidence.app.repos.DetectiveRepo;
 import com.evidence.app.services.DetectiveService;
 import com.evidence.app.util.NumberGenerator;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
  * @createdOn 5/16/2021
  */
 @Service
+@NoArgsConstructor
 public class SimpleDetectiveService extends SimpleAbstractService<Detective> implements DetectiveService {
 
     @Autowired
@@ -34,7 +36,7 @@ public class SimpleDetectiveService extends SimpleAbstractService<Detective> imp
         return repo.findByBadgeNumber(badgeNumber).orElse(null);
     }
 
-    public void setRepo(DetectiveRepo repo) {
+    public SimpleDetectiveService (DetectiveRepo repo){
         this.repo = repo;
     }
 }
