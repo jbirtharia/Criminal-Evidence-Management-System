@@ -63,7 +63,6 @@ public class DetectiveServiceDemo {
         // Creating criminal case
         CriminalCase criminalCase = operationsService.createCriminalCase(CaseType.FELONY,
                 "Drugs being sold to minors", detective.getBadgeNumber(), evidenceLocationMap);
-        // criminalCase.getLeadInvestigator().setCriminalCases(Set.of(criminalCase));
 
         log.info("Criminal Case Data : {}",criminalCase);
         return ConvertUtils.cloneObjectToCriminalCaseResponseDTO(criminalCase);

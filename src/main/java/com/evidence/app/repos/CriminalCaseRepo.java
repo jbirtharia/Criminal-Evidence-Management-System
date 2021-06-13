@@ -9,14 +9,28 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
+ * The interface Criminal case repo.
+ *
  * @author JayendraB
- * @createdOn 5/16/2021
+ * @createdOn 5 /16/2021
  */
 @Repository
 public interface CriminalCaseRepo extends  JpaRepository<CriminalCase, Long> {
 
+    /**
+     * Find by lead investigator set.
+     *
+     * @param detective the detective
+     * @return the set
+     */
     Set<CriminalCase> findByLeadInvestigator(Detective detective);
 
+    /**
+     * Find by number optional.
+     *
+     * @param caseNumber the case number
+     * @return the optional
+     */
     Optional<CriminalCase> findByNumber(String caseNumber);
 
 }

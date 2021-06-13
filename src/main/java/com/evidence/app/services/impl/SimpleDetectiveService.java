@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
+ * The type Simple detective service.
+ *
  * @author JayendraB
- * @createdOn 5/16/2021
+ * @createdOn 5 /16/2021
  */
 @Service
 @NoArgsConstructor
@@ -36,6 +38,11 @@ public class SimpleDetectiveService extends SimpleAbstractService<Detective> imp
         return repo.findByBadgeNumber(badgeNumber).orElse(null);
     }
 
+    /**
+     * Instantiates a new Simple detective service.
+     *
+     * @param repo the repo
+     */
     public SimpleDetectiveService (DetectiveRepo repo){
         this.repo = repo;
     }

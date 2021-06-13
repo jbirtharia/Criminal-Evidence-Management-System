@@ -97,6 +97,13 @@ public class SimpleOperationsService implements OperationsService {
         throw new NotImplementedException(Constants.NOT_NEEDED_EXCEPTION);
     }
 
+    /**
+     * Instantiates a new Simple operations service.
+     *
+     * @param detectiveService the detective service
+     * @param storageService   the storage service
+     * @param criminalCaseRepo the criminal case repo
+     */
     public SimpleOperationsService(DetectiveService detectiveService, StorageService storageService, CriminalCaseRepo criminalCaseRepo){
         this.detectiveService = detectiveService;
         this.storageService = storageService;

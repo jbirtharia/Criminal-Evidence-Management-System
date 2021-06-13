@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
+ * The type Simple storage service.
+ *
  * @author JayendraB
- * @createdOn 5/16/2021
+ * @createdOn 5 /16/2021
  */
 @Service
 @NoArgsConstructor
@@ -34,6 +36,11 @@ public class SimpleStorageService extends SimpleAbstractService<Storage> impleme
         return repo.findByName(name).orElseThrow(() -> new ServiceException(Constants.STORE_NOT_FOUND));
     }
 
+    /**
+     * Instantiates a new Simple storage service.
+     *
+     * @param repo the repo
+     */
     public SimpleStorageService(StorageRepo repo){
         this.repo = repo;
     }

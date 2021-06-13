@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @author JayendraB
- * @createdOn 5/13/2021
+ * The type Detective controller.
  */
 @RestController
 @RequestMapping(Constants.APP_URL)
@@ -22,9 +21,10 @@ public class DetectiveController {
     DetectiveServiceDemo detectiveServiceDemo;
 
     /**
-     * Get detective info detective.
+     * Creating criminal case with the help of caseDTO
      *
-     * @return the detective
+     * @param caseDTO the case dto
+     * @return the criminal case response dto
      */
     @PostMapping(Constants.CREATE_CASE)
     public CriminalCaseResponseDTO createCase(@RequestBody CaseDTO caseDTO){
