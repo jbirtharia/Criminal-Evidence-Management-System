@@ -20,27 +20,24 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 @Slf4j
 public class CustomizedResponseEntityExceptionHandler {
 
-//    @ExceptionHandler(Exception.class)
-//    public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) {
-//        log.error("Reason of Exception : {}", String.valueOf(ex.getMessage()));
-//        log.error("Occurred at : {}", ex.getStackTrace());
-//        ExceptionResponse response = new ExceptionResponse(DateProcessor.toDate(DateProcessor.getCurrentDateAndTime()),HttpStatus.INTERNAL_SERVER_ERROR.value(),HttpStatus.INTERNAL_SERVER_ERROR.toString(),ex.getMessage(), request.getDescription(false));
-//        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-//    }
-//
-//    @ExceptionHandler(NoHandlerFoundException.class)
-//    public final ResponseEntity<Object> handleNoResultException(NoHandlerFoundException ex, WebRequest request) {
-//        log.error("Exception : {} ", ex.getCause());
-//        log.error(String.valueOf(ex));
-//        ExceptionResponse response = new ExceptionResponse(DateProcessor.toDate(DateProcessor.getCurrentDateAndTime()),HttpStatus.NOT_FOUND.value(),HttpStatus.NOT_FOUND.toString(), "No message available",request.getDescription(false));
-//        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
-//    }
-//
-//    @ExceptionHandler(NotImplementedException.class)
-//    public final ResponseEntity<Object> handleNoImplementException(NotImplementedException ex, WebRequest request) {
-//        log.error("Exception : {} ", ex.getCause());
-//        log.error(String.valueOf(ex));
-//        ExceptionResponse response = new ExceptionResponse(DateProcessor.toDate(DateProcessor.getCurrentDateAndTime()),HttpStatus.NOT_FOUND.value(),"Not implemented", ex.getMessage(),request.getDescription(false));
-//        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
-//    }
+    @ExceptionHandler(Exception.class)
+    public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) {
+        log.error("Occurred at : {}", ex.getStackTrace()[0]);
+        ExceptionResponse response = new ExceptionResponse(DateProcessor.toDate(DateProcessor.getCurrentDateAndTime()),HttpStatus.INTERNAL_SERVER_ERROR.value(),HttpStatus.INTERNAL_SERVER_ERROR.toString(),ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public final ResponseEntity<Object> handleNoResultException(NoHandlerFoundException ex, WebRequest request) {
+        log.error(String.valueOf(ex));
+        ExceptionResponse response = new ExceptionResponse(DateProcessor.toDate(DateProcessor.getCurrentDateAndTime()),HttpStatus.NOT_FOUND.value(),HttpStatus.NOT_FOUND.toString(), "No message available",request.getDescription(false));
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(NotImplementedException.class)
+    public final ResponseEntity<Object> handleNoImplementException(NotImplementedException ex, WebRequest request) {
+        log.error(String.valueOf(ex));
+        ExceptionResponse response = new ExceptionResponse(DateProcessor.toDate(DateProcessor.getCurrentDateAndTime()),HttpStatus.NOT_FOUND.value(),"Not implemented", ex.getMessage(),request.getDescription(false));
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
 }

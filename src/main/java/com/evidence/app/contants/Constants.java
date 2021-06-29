@@ -7,6 +7,7 @@ package com.evidence.app.contants;
 public class Constants {
 
     private Constants() {
+        super();
     }
 
     public static final String APP_URL = "/app";
@@ -20,5 +21,7 @@ public class Constants {
     public static final String STORE_NOT_FOUND = "Store is Not Found.";
 
     public static final String STORAGE_NAME = "CRIMINAL_STORAGE";
+
+    public static final String PARSING_EXCEPTION = "Exception occurred while parsing";
 
 }
