@@ -32,3 +32,15 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Some Extra Files ###
+.gitignore
+.DS_Store
+Added_comments_in_the_code_files_.patch
+src/.DS_Store
+src/main/.DS_Store
+src/main/java/.DS_Store
+src/main/java/com/.DS_Store
+src/main/java/com/evidence/.DS_Store
+src/main/java/com/evidence/app/.DS_Store
+src/main/java/com/evidence/app/custom/.DS_Store
